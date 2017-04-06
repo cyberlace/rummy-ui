@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash: true }),
   ],
   providers: [
     AuthenticationService
