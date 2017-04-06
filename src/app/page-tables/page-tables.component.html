@@ -1,0 +1,135 @@
+<app-header></app-header>
+<section id="main" class="container-fluid">
+  <div class="row">
+
+    <app-breadcrumb title="Game Tables"></app-breadcrumb>
+
+    <section class="content-wrapper" id="main-content">
+      <div class="content">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="responsive_table_main responsive_sortable">
+              <div class="float-right">
+                <a class="btn btn-success" routerLink="/create-table">Create Table</a>
+              </div>
+              <table class="table tablesaw tablesaw-stack tablesaw-sortable"
+                     data-tablesaw-sortable
+                     data-tablesaw-sortable-switch>
+                <thead>
+                <tr>
+                  <th data-tablesaw-sortable-col>
+                    ID
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Table Type
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Game Type
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Table Owner
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Game Bet
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Players
+                  </th>
+                  <th data-tablesaw-sortable-col
+                      data-tablesaw-sortable-default-col>
+                    Status
+                  </th>
+                  <th data-tablesaw-sortable-col>
+                    Action
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Khoo Wong</td>
+                  <td>Edmund@example.com</td>
+                  <td>Khoo Wong</td>
+                  <td>Edmund@example.com</td>
+                  <td>26000</td>
+                  <td>26000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Harvinder Singh</td>
+                  <td>Harvinder@example.com</td>
+                  <td>Harvinder Singh</td>
+                  <td>Harvinder@example.com</td>
+                  <td>11000</td>
+                  <td>11000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Jacob Terry</td>
+                  <td>Jacob@example.com</td>
+                  <td>Jacob Terry</td>
+                  <td>Jacob@example.com</td>
+                  <td>29000</td>
+                  <td>29000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Larry Khoo</td>
+                  <td>Larry@example.com</td>
+                  <td>Larry Khoo</td>
+                  <td>Larry@example.com</td>
+                  <td>8000</td>
+                  <td>8000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>Nicky the Bird</td>
+                  <td>Nicky@example.com</td>
+                  <td>Nicky the Bird</td>
+                  <td>Nicky@example.com</td>
+                  <td>30000</td>
+                  <td>30000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Wong Khoo</td>
+                  <td>Terry@example.com</td>
+                  <td>Wong Khoo</td>
+                  <td>Terry@example.com</td>
+                  <td>16000</td>
+                  <td>16000</td>
+                  <td>
+                    <i class="icon icon_pencil"></i>
+                    <i class="icon icon_trash"></i>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<app-footer></app-footer>

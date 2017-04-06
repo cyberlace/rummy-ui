@@ -1,0 +1,42 @@
+<div class="login-background">
+  <div class="login-page">
+    <div class="main-login-contain">
+      <div class="login-circul text-xs-center">
+        <i class="icon_lock_alt login-icon-circul"></i>
+      </div>
+      <div class="login-form">
+        <form id="form-validation" method="post" novalidate="novalidate">
+          <div class="login_input">
+            <input type="text" class="login-form-border" id="email" name="email" placeholder="Enter email" #username>
+            <label id="email-error" class="error" for="email">{{emailError}}</label>
+            <span class="login-right-icon"><i class="icon icon_mail"></i></span>
+          </div>
+          <div class="login_input">
+            <input type="password" class="login-form-border" id="password" name="password" placeholder="Password" #password>
+            <label id="password-error" class="error" for="password">{{passwordError}}</label>
+            <span class="login-right-icon"><i class="icon icon_key"></i></span>
+          </div>
+          <div class="checkbox checkbox-login-v1">
+            <div class="checkbox-squared">
+              <input value="None" id="checkbox-squared1" name="check" type="checkbox">
+              <label for="checkbox-squared1"></label>
+              <span>Remember me</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-login" (click)="login(username.value, password.value)">Submit</button>
+          <div class="goto-login">
+            <div class="sign-up-login">
+              <i class="arrow_back"></i>
+              <a>Sign up</a>
+            </div>
+            <div class="forgot-password-login">
+              <a>
+                Forgot password?
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<header id="header">
+  <div class="header-width">
+    <div class="col-xl-9">
+      <div class="logo float-xs-left">
+        <a href="javascript:void(0)"><img src="../../assets/images/logo.png" alt="logo"></a>
+      </div>
+      <div class="menucontainer">
+        <div class="overlapblackbg"></div>
+        <a id="navtoggle" class="animated-arrow"><span></span></a>
+      </div>
+    </div>
+    <div class="col-xl-3 header-right">
+      <div class="header-inner-right">
+        <div class="user-dropdown">
+          <div class="btn-group {{userMenu}}">
+            <a href="javascript:void(0)" (click)="toggleUserMenu()" class="user-header dropdown-toggle" data-toggle="dropdown" data-animation="slideOutUp" aria-haspopup="true" aria-expanded="false">
+              <img src="../../assets/images/profile.jpg" alt="Profile image">
+            </a>
+            <div class="dropdown-menu drop-profile">
+              <div class="userProfile">
+                <img src="../../assets/images/profile.jpg" alt="Profile image">
+                <h5>Naveen Kumar Uppuluri</h5>
+                <p>naveen513@ymail.com</p>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a class="btn btn-success float-xs-left left-spacing" href="javascript:void(0)" role="button">Edit Profile</a>
+              <a class="btn btn-primary float-xs-right right-spacing" href="javascript:void(0)" role="button" (click)="auth.logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

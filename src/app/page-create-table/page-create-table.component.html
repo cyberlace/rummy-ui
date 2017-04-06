@@ -1,0 +1,75 @@
+<app-header></app-header>
+<section id="main" class="container-fluid">
+  <div class="row">
+
+    <app-breadcrumb title="Create your own Game Table"></app-breadcrumb>
+
+    <section class="content-wrapper" id="main-content">
+      <div class="content">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form method="post">
+              <div class="basic-form-layout form-lg-spacing">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12" style="margin: 0 auto">
+                    <div class="fileld-layout">
+                      <label>Table Type</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="radio-inline">
+                            <div class="radio-button">
+                              <input value="Public" id="radio-button1" name="radio" type="radio" checked="">
+                              <label for="radio-button1"></label>
+                              <span>Public</span>
+                            </div>
+                            <div class="radio-button">
+                              <input value="Private" id="radio-button2" name="radio" type="radio">
+                              <label for="radio-button2"></label>
+                              <span>Private</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fileld-layout">
+                      <label>Game Type</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <select class="form-control">
+                            <option>Rummy 201</option>
+                            <option selected>Rummy 101</option>
+                            <option>Rummy 55</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fileld-layout">
+                      <label>Maximum Players</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="number" placeholder="Max Players" class="form-control" max="8" min="2" step="1" value="2">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fileld-layout">
+                      <label>Game Bet</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="number" placeholder="Game Bet" class="form-control" max="1000" min="100" step="50" value="100">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fileld-layou">
+                      <a class="btn btn-primary site-btn">Create Table</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<app-footer></app-footer>
