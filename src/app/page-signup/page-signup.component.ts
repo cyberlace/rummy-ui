@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../shared/services/authentication.service';
+import {RummyApiService} from '../shared/services/rummy-api.service';
 
 @Component({
   selector: 'app-page-signup',
@@ -13,7 +14,7 @@ export class PageSignupComponent implements OnInit {
   private confirmPasswordError: string;
   private acceptTermsError: boolean;
 
-  constructor(private auth: AuthenticationService) { }
+  constructor(private auth: AuthenticationService, api: RummyApiService) { }
 
   ngOnInit() {
   }

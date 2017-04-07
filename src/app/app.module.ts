@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PageCreateTableComponent } from './page-create-table/page-create-table.component';
 import { PageSignupComponent } from './page-signup/page-signup.component';
+import {RummyApiService} from "./shared/services/rummy-api.service";
 
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/tables', pathMatch: 'full' },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { useHash: true }),
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    RummyApiService
   ],
   bootstrap: [AppComponent]
 })
