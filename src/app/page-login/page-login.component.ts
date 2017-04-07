@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../shared/services/authentication.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-login',
@@ -19,18 +19,22 @@ export class PageLoginComponent implements OnInit {
 
   login(username: string, password: string) {
     const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let isValid = true;
 
     if (username === '') {
       this.emailError = 'Email cannot be empty.';
+      isValid = false;
     } else if (!EMAIL_REGEXP.test(username)) {
       this.emailError = 'Invalid Email address.';
+      isValid = false;
     }
 
     if (password === '') {
       this.passwordError = 'Password cannot be empty.';
+      isValid = false;
     }
 
-    if (this.auth.login(username, password)) {
+    if (isValid && this.auth.login(username, password)) {
       this.router.navigate(['/tables']);
     }
   }

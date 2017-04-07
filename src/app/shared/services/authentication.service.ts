@@ -46,4 +46,12 @@ export class AuthenticationService {
 
     this.router.navigate(['/login']);
   }
+
+  signUp(fullName: string, email: string, password: string) {
+    if (fullName !== '' && email !== '' && password !== '') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

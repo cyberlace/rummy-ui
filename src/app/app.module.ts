@@ -14,10 +14,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PageCreateTableComponent } from './page-create-table/page-create-table.component';
+import { PageSignupComponent } from './page-signup/page-signup.component';
 
 const appRoutes: Routes = [
   { path: '',  redirectTo: '/tables', pathMatch: 'full' },
   { path: 'login', component: PageLoginComponent },
+  { path: 'signup', component: PageSignupComponent },
   { path: 'tables', component: PageTablesComponent },
   { path: 'create-table', component: PageCreateTableComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     BreadcrumbComponent,
-    PageCreateTableComponent
+    PageCreateTableComponent,
+    PageSignupComponent
   ],
   imports: [
     BrowserModule,

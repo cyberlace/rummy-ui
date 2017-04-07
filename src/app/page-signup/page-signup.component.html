@@ -1,0 +1,56 @@
+<div class="register-background">
+
+  <div class="register-page">
+    <div class="main-register-contain">
+      <div class="register-circul text-xs-center">
+        <i class="icon icon_documents_alt register-icon-circul"></i>
+      </div>
+      <div class="register-form">
+        <form id="form-validation" method="post" novalidate="novalidate">
+          <div class="register_input">
+            <input type="text" class="register-form-border" id="full_name" name="full_name" placeholder="Full Name"
+                   #fullName>
+            <label id="full-name-error" class="error" for="full_name">{{fullNameError}}</label>
+            <span class="register-right-icon"><i class="icon icon_profile"></i></span>
+          </div>
+          <div class="register_input">
+            <input type="text" class="register-form-border" id="email" name="email" placeholder="Enter email" #email>
+            <label id="email-error" class="error" for="email">{{emailError}}</label>
+            <span class="register-right-icon"><i class="icon icon_mail"></i></span>
+          </div>
+          <div class="register_input">
+            <input type="password" class="register-form-border" id="password" name="password" placeholder="Password"
+                   #password>
+            <label id="password-error" class="error" for="password">{{passwordError}}</label>
+            <span class="register-right-icon"><i class="icon icon_key"></i></span>
+          </div>
+          <div class="register_input">
+            <input type="password" class="register-form-border" id="password_confirm" name="password_confirm"
+                   placeholder="Confirm Password" #confirmPassword>
+            <label id="confirm-password-error" class="error" for="password_confirm">{{confirmPasswordError}}</label>
+            <span class="register-right-icon"><i class="icon icon_key"></i></span>
+          </div>
+          <div class="checkbox checkbox-register-v1">
+            <div class="checkbox-squared">
+              <input value="None" id="accept_terms" name="check" type="checkbox" #acceptTerms>
+              <label for="accept_terms"></label>
+              <span class="{{acceptTermsError ? 'error' : ''}}">I agree to the Terms &amp; Conditions.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-register"
+                    (click)="signUp(fullName.value, email.value, password.value, confirmPassword.value, acceptTerms.checked)">
+              Submit
+            </button>
+          </div>
+          <div class="goto-register">
+            <div class="text-xs-center">
+              Already a member ? <a routerLink="/login">Click to Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
