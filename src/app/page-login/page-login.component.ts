@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class PageLoginComponent implements OnInit {
   private emailError: string;
   private passwordError: string;
+  private loginError: string;
 
   constructor(private auth: AuthenticationService, private router: Router) {
   }
@@ -33,9 +34,13 @@ export class PageLoginComponent implements OnInit {
       this.passwordError = 'Password cannot be empty.';
       isValid = false;
     }
-
-    if (isValid && this.auth.login(username, password)) {
-      this.router.navigate(['/tables']);
+    if (isValid) {
+      this.auth.login(username, password).subscribe(res => {
+        this.router.navigate(['/tables']);
+      }, err => {
+        const data = err.json();
+        this.loginError = data.message;
+      });
     }
   }
 }

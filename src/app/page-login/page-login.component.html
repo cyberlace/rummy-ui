@@ -6,13 +6,19 @@
       </div>
       <div class="login-form">
         <form id="form-validation" method="post" novalidate="novalidate">
+          <div class="login_errors">
+            <ul>
+              <li>{{loginError}}</li>
+            </ul>
+          </div>
           <div class="login_input">
             <input type="text" class="login-form-border" id="email" name="email" placeholder="Enter email" #username>
             <label id="email-error" class="error" for="email">{{emailError}}</label>
             <span class="login-right-icon"><i class="icon icon_mail"></i></span>
           </div>
           <div class="login_input">
-            <input type="password" class="login-form-border" id="password" name="password" placeholder="Password" #password>
+            <input type="password" class="login-form-border" id="password" name="password" placeholder="Password"
+                   #password>
             <label id="password-error" class="error" for="password">{{passwordError}}</label>
             <span class="login-right-icon"><i class="icon icon_key"></i></span>
           </div>
@@ -23,7 +29,9 @@
               <span>Remember me</span>
             </div>
           </div>
-          <button type="button" class="btn btn-primary btn-login" (click)="login(username.value, password.value)">Submit</button>
+          <button type="button" class="btn btn-primary btn-login" (click)="login(username.value, password.value)">
+            Submit
+          </button>
           <div class="goto-login">
             <div class="sign-up-login">
               <i class="arrow_back"></i>
