@@ -8,22 +8,26 @@
       <div class="content">
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <form method="post">
+            <form method="post" novalidate="novalidate"
+                  id="form-validation">
               <div class="basic-form-layout form-lg-spacing">
                 <div class="row">
                   <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12" style="margin: 0 auto">
+                    <div class="fileld-layout">
+                      <label class="error">{{formError}}</label>
+                    </div>
                     <div class="fileld-layout">
                       <label>Table Type</label>
                       <div class="form-group">
                         <div class="input-group">
                           <div class="radio-inline">
                             <div class="radio-button">
-                              <input value="Public" id="radio-button1" name="radio" type="radio" checked="">
+                              <input value="Public" id="radio-button1" name="radio" type="radio" checked #tableType1>
                               <label for="radio-button1"></label>
                               <span>Public</span>
                             </div>
                             <div class="radio-button">
-                              <input value="Private" id="radio-button2" name="radio" type="radio">
+                              <input value="Private" id="radio-button2" name="radio" type="radio" #tableType2>
                               <label for="radio-button2"></label>
                               <span>Private</span>
                             </div>
@@ -35,7 +39,7 @@
                       <label>Game Type</label>
                       <div class="form-group">
                         <div class="input-group">
-                          <select class="form-control">
+                          <select class="form-control" #gameType>
                             <option>Rummy 201</option>
                             <option selected>Rummy 101</option>
                             <option>Rummy 55</option>
@@ -47,7 +51,8 @@
                       <label>Maximum Players</label>
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="number" placeholder="Max Players" class="form-control" max="8" min="2" step="1" value="2">
+                          <input type="number" placeholder="Max Players" class="form-control" max="8" min="2" step="1"
+                                 value="2" #maxPlayers>
                         </div>
                       </div>
                     </div>
@@ -55,12 +60,21 @@
                       <label>Game Bet</label>
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="number" placeholder="Game Bet" class="form-control" max="1000" min="100" step="50" value="100">
+                          <input type="number" placeholder="Game Bet" class="form-control" max="1000" min="100"
+                                 step="50" value="100" #bet>
                         </div>
                       </div>
                     </div>
-                    <div class="fileld-layou">
-                      <a class="btn btn-primary site-btn">Create Table</a>
+                    <div class="fileld-layout">
+                      <button type="button"
+                              (click)="createTable(tableType1.checked ? 'Public' : 'Private',gameType.value, bet.value, maxPlayers.value)"
+                              class="btn btn-primary btn-register">
+                        Submit
+                      </button>
+                      <a routerLink="/game-tables"
+                         class="btn btn-primary btn-cancel">
+                        Cancel
+                      </a>
                     </div>
                   </div>
                 </div>

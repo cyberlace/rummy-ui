@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="responsive_table_main responsive_sortable">
-              <div class="float-right">
+              <div class="float-right" style="margin-bottom: 10px; ">
                 <a class="btn btn-success" routerLink="/create-table">Create Table</a>
               </div>
               <table class="table tablesaw tablesaw-stack tablesaw-sortable"
@@ -45,83 +45,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Khoo Wong</td>
-                  <td>Edmund@example.com</td>
-                  <td>Khoo Wong</td>
-                  <td>Edmund@example.com</td>
-                  <td>26000</td>
-                  <td>26000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Harvinder Singh</td>
-                  <td>Harvinder@example.com</td>
-                  <td>Harvinder Singh</td>
-                  <td>Harvinder@example.com</td>
-                  <td>11000</td>
-                  <td>11000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Jacob Terry</td>
-                  <td>Jacob@example.com</td>
-                  <td>Jacob Terry</td>
-                  <td>Jacob@example.com</td>
-                  <td>29000</td>
-                  <td>29000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Larry Khoo</td>
-                  <td>Larry@example.com</td>
-                  <td>Larry Khoo</td>
-                  <td>Larry@example.com</td>
-                  <td>8000</td>
-                  <td>8000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>0</td>
-                  <td>Nicky the Bird</td>
-                  <td>Nicky@example.com</td>
-                  <td>Nicky the Bird</td>
-                  <td>Nicky@example.com</td>
-                  <td>30000</td>
-                  <td>30000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Wong Khoo</td>
-                  <td>Terry@example.com</td>
-                  <td>Wong Khoo</td>
-                  <td>Terry@example.com</td>
-                  <td>16000</td>
-                  <td>16000</td>
-                  <td>
-                    <i class="icon icon_pencil"></i>
-                    <i class="icon icon_trash"></i>
-                  </td>
+                <tr *ngFor="let gameTable of gameTables">
+                  <td>{{gameTable.id}}</td>
+                  <td>{{gameTable.tableType}}</td>
+                  <td>{{gameTable.gameType}}</td>
+                  <td>{{gameTable.userFirstName}}</td>
+                  <td>{{gameTable.bet}}</td>
+                  <td>{{gameTable.maxPlayers}}</td>
+                  <td>{{gameTable.status}}</td>
+                  <td><a class="btn btn-primary" routerLink="/game-table/{{gameTable.id}}">View</a></td>
                 </tr>
                 </tbody>
               </table>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../shared/services/authentication.service';
 import {RummyApiService} from '../shared/services/rummy-api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-signup',
@@ -8,29 +9,41 @@ import {RummyApiService} from '../shared/services/rummy-api.service';
   styleUrls: ['./page-signup.component.scss']
 })
 export class PageSignupComponent implements OnInit {
-  private fullNameError: string;
+  private registerError: string;
+  private firstNameError: string;
+  private lastNameError: string;
   private emailError: string;
   private passwordError: string;
   private confirmPasswordError: string;
   private acceptTermsError: boolean;
 
-  constructor(private auth: AuthenticationService, api: RummyApiService) { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  signUp(fullName, email, password, confirmPassword, acceptTerms) {
+  signUp(firstName, lastName, email, password, confirmPassword, acceptTerms) {
     const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     let isValid = true;
 
-    if (fullName === '') {
-      this.fullNameError = 'Full Name cannot be empty.';
+    if (firstName === '') {
+      this.firstNameError = 'First Name cannot be empty.';
       isValid = false;
-    } else if (fullName.lenth > 50) {
-      this.fullNameError = 'Full Name should not exceed 50 characters.';
+    } else if (firstName.lenth > 50) {
+      this.firstNameError = 'First Name should not exceed 50 characters.';
       isValid = false;
     } else {
-      this.fullNameError = '';
+      this.firstNameError = '';
+    }
+
+    if (lastName === '') {
+      this.lastNameError = 'Last Name cannot be empty.';
+      isValid = false;
+    } else if (lastName.lenth > 50) {
+      this.lastNameError = 'Last Name should not exceed 50 characters.';
+      isValid = false;
+    } else {
+      this.lastNameError = '';
     }
 
     if (email === '') {
@@ -73,8 +86,13 @@ export class PageSignupComponent implements OnInit {
       this.acceptTermsError = !acceptTerms;
     }
 
-    if (isValid && this.auth.signUp(fullName, email, password)) {
-      console.log('signup');
+    if (isValid) {
+      this.auth.signUp(firstName, lastName, email, password).subscribe(res => {
+        this.router.navigate(['/validate-email']);
+      }, err => {
+        const data = err.json();
+        this.registerError = data.message;
+      });
     }
   }
 }

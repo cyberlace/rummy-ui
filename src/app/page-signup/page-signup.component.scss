@@ -21,6 +21,16 @@
   content: "";
 }
 
+.register_errors ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.register_errors li {
+  font-size: 14px;
+  color: #f84343;
+  font-weight: 700;
+}
 .main-register-contain {
   display: table-cell;
   vertical-align: middle;

@@ -6,11 +6,24 @@
         <i class="icon icon_documents_alt register-icon-circul"></i>
       </div>
       <div class="register-form">
-        <form id="form-validation" method="post" novalidate="novalidate">
+        <form id="form-validation" method="post"
+              (submit)="signUp(firstName.value, lastName.value, email.value, password.value, confirmPassword.value, acceptTerms.checked)"
+              novalidate="novalidate">
+          <div class="register_errors">
+            <ul>
+              <li>{{registerError}}</li>
+            </ul>
+          </div>
           <div class="register_input">
-            <input type="text" class="register-form-border" id="full_name" name="full_name" placeholder="Full Name"
-                   #fullName>
-            <label id="full-name-error" class="error" for="full_name">{{fullNameError}}</label>
+            <input type="text" class="register-form-border" id="first_name" name="first_name" placeholder="First Name"
+                   #firstName>
+            <label id="first-name-error" class="error" for="first_name">{{firstNameError}}</label>
+            <span class="register-right-icon"><i class="icon icon_profile"></i></span>
+          </div>
+          <div class="register_input">
+            <input type="text" class="register-form-border" id="last_name" name="last_name" placeholder="Last Name"
+                   #lastName>
+            <label id="last-name-error" class="error" for="last_name">{{lastNameError}}</label>
             <span class="register-right-icon"><i class="icon icon_profile"></i></span>
           </div>
           <div class="register_input">
@@ -38,8 +51,7 @@
             </div>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-register"
-                    (click)="signUp(fullName.value, email.value, password.value, confirmPassword.value, acceptTerms.checked)">
+            <button type="submit" class="btn btn-primary btn-register">
               Submit
             </button>
           </div>

@@ -1,18 +1,18 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {RummyApiService} from './rummy-api.service';
-import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthenticationService {
-  private isUserLoggedIn: boolean;
-  private firstName: string;
-  private lastName: string;
-  private email: string;
-  private token: string;
+  public isUserLoggedIn: boolean;
+  public userId: number;
+  public firstName: string;
+  public lastName: string;
+  public email: string;
+  public token: string;
 
-  constructor(private router: Router, private api: RummyApiService, private http: Http) {
+  constructor(private router: Router, private api: RummyApiService) {
     this.getUserDetails();
   }
 
@@ -24,6 +24,7 @@ export class AuthenticationService {
     this.initLocalStorage();
     this.isUserLoggedIn = localStorage.getItem('isUserLoggedIn') === 'true';
     this.token = localStorage.getItem('token');
+    this.userId = +localStorage.getItem('userId');
     this.firstName = localStorage.getItem('firstName');
     this.lastName = localStorage.getItem('lastName');
     this.email = localStorage.getItem('email');
@@ -32,6 +33,9 @@ export class AuthenticationService {
   private initLocalStorage() {
     if (!localStorage.getItem('isUserLoggedIn')) {
       localStorage.setItem('isUserLoggedIn', 'false');
+    }
+    if (!localStorage.getItem('userId')) {
+      localStorage.setItem('userId', '');
     }
     if (!localStorage.getItem('firstName')) {
       localStorage.setItem('firstName', '');
@@ -47,17 +51,30 @@ export class AuthenticationService {
     }
   }
 
+  signUp(firstName: string, lastName: string, email: string, password: string) {
+    const body = {
+      'first_name': firstName,
+      'last_name': lastName,
+      'email': email,
+      'password': password
+    };
+
+    return this.api.post('/user/signup', body);
+  }
+
   login(email: string, password: string): any {
     return this.api.post('/user/login', {'email': email, 'password': password})
       .map(res => {
         const data = res.json();
         localStorage.setItem('isUserLoggedIn', 'true');
+        localStorage.setItem('userId', data.id + '');
         localStorage.setItem('firstName', data.firstName);
         localStorage.setItem('lastName', data.lastName);
         localStorage.setItem('email', data.email);
         localStorage.setItem('token', data.token);
 
         this.isUserLoggedIn = false;
+        this.userId = data.id;
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.email = data.email;
@@ -68,12 +85,14 @@ export class AuthenticationService {
 
   logout() {
     localStorage.setItem('isUserLoggedIn', 'false');
+    localStorage.setItem('userId', '');
     localStorage.setItem('firstName', '');
     localStorage.setItem('lastName', '');
     localStorage.setItem('email', '');
     localStorage.setItem('token', '');
 
     this.isUserLoggedIn = false;
+    this.userId = null;
     this.firstName = '';
     this.lastName = '';
     this.email = '';
@@ -82,11 +101,5 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
-  signUp(fullName: string, email: string, password: string) {
-    if (fullName !== '' && email !== '' && password !== '') {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
 }

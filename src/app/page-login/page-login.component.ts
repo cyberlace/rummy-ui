@@ -18,14 +18,14 @@ export class PageLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
     const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     let isValid = true;
 
-    if (username === '') {
+    if (email === '') {
       this.emailError = 'Email cannot be empty.';
       isValid = false;
-    } else if (!EMAIL_REGEXP.test(username)) {
+    } else if (!EMAIL_REGEXP.test(email)) {
       this.emailError = 'Invalid Email address.';
       isValid = false;
     }
@@ -35,8 +35,8 @@ export class PageLoginComponent implements OnInit {
       isValid = false;
     }
     if (isValid) {
-      this.auth.login(username, password).subscribe(res => {
-        this.router.navigate(['/tables']);
+      this.auth.login(email, password).subscribe(res => {
+        this.router.navigate(['/game-tables']);
       }, err => {
         const data = err.json();
         this.loginError = data.message;
