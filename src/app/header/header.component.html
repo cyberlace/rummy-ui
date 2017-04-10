@@ -19,12 +19,12 @@
             <div class="dropdown-menu drop-profile">
               <div class="userProfile">
                 <img src="../../assets/images/profile.jpg" alt="Profile image">
-                <h5>{{auth.firstName}} {{auth.lastName}}</h5>
-                <p>{{auth.email}}</p>
+                <h5>{{userFirstName}} {{userLastName}}</h5>
+                <p>{{userEmail}}</p>
               </div>
               <div class="dropdown-divider"></div>
               <a class="btn btn-success float-xs-left left-spacing" href="javascript:void(0)" role="button">Edit Profile</a>
-              <a class="btn btn-primary float-xs-right right-spacing" href="javascript:void(0)" role="button" (click)="auth.logout()">Logout</a>
+              <a class="btn btn-primary float-xs-right right-spacing" href="javascript:void(0)" role="button" (click)="logout()">Logout</a>
             </div>
           </div>
         </div>

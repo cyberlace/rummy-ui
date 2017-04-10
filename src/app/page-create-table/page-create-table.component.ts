@@ -10,7 +10,7 @@ import {GameTable} from '../shared/models/game-table';
   styleUrls: ['./page-create-table.component.scss']
 })
 export class PageCreateTableComponent implements OnInit {
-  private formError: string;
+  public formError: string;
 
   constructor(private auth: AuthenticationService, private router: Router, private gameTableService: GameTablesService) {
   }

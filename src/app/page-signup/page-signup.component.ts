@@ -9,13 +9,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./page-signup.component.scss']
 })
 export class PageSignupComponent implements OnInit {
-  private registerError: string;
-  private firstNameError: string;
-  private lastNameError: string;
-  private emailError: string;
-  private passwordError: string;
-  private confirmPasswordError: string;
-  private acceptTermsError: boolean;
+  public registerError: string;
+  public firstNameError: string;
+  public lastNameError: string;
+  public emailError: string;
+  public passwordError: string;
+  public confirmPasswordError: string;
+  public acceptTermsError: boolean;
 
   constructor(private auth: AuthenticationService, private router: Router) { }
 

@@ -8,9 +8,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./page-login.component.scss']
 })
 export class PageLoginComponent implements OnInit {
-  private emailError: string;
-  private passwordError: string;
-  private loginError: string;
+  public emailError: string;
+  public passwordError: string;
+  public loginError: string;
 
   constructor(private auth: AuthenticationService, private router: Router) {
   }

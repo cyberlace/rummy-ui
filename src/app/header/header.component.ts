@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../shared/services/authentication.service";
+import {AuthenticationService} from '../shared/services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +7,18 @@ import {AuthenticationService} from "../shared/services/authentication.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private userMenu: string;
+  public userMenu: string;
+  public userFirstName: string;
+  public userLastName: string;
+  public userEmail: string;
 
   constructor(private auth: AuthenticationService) {
   }
 
   ngOnInit() {
+    this.userFirstName = this.auth.firstName;
+    this.userLastName = this.auth.lastName;
+    this.userEmail = this.auth.email;
   }
 
   toggleUserMenu() {
@@ -21,5 +27,9 @@ export class HeaderComponent implements OnInit {
     } else {
       this.userMenu = 'open';
     }
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
