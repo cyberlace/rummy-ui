@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-game-table.component.scss']
 })
 export class PageGameTableComponent implements OnInit {
-  private path: Object;
+  public path: Object;
 
   constructor() { }
 
