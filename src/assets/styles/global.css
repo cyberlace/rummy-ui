@@ -1,38 +1,4 @@
-/*-- Userlist --*/
-/*-- Map --*/
-/*-- Icons --*/
-/*-- Buttons --*/
-/*-- Images --*/
-/*-- Tabs --*/
-/*-- Calendar --*/
-/*-- Cards --*/
-/*-- Dropdown --*/
-/*-- Badges --*/
-/*-- Carousel --*/
-/*-- Tooltip & Popover --*/
-/*-- Mansonry --*/
-/*-- Rating --*/
-/*-- Lightbox --*/
-/*-- Pricing Table --*/
-/*-- Bottom Spacing None --*/
-/*-- Timeline --*/
-/*-- Blockquote --*/
-/*-- Navbar --*/
-/*-- Form layout --*/
-/*-- Form Wizard --*/
-/*-- eCommerce Dashboard --*/
-/*-- Morris chart --*/
-/*-- Border Radius --*/
-/*-- border-radius --*/
-/*-- Box Shadow --*/
-/*-- Animation --*/
-/*-- Transform Rotate --*/
-/*-- Filter --*/
-/*-- All Keyframes --*/
-/*-- Transform --*/
-/*-- Transition --*/
-/*-- Background-RGB --*/
-/*-- Color-RGB --*/
+/*-- Global.css */
 .checkbox-squared {
   position: relative;
 }
@@ -149,4 +115,8 @@ a:not([href]):not([tabindex]).btn {
 
 .tablesaw-bar:after {
   clear: both;
+}
+
+.breadcrumb-item.active {
+  color: #818a91;
 }

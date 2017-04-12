@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://rummy-api.cyberlace.com:3001'
+  apiBaseUrl: 'http://css-rummy-api.herokuapp.com/'
 };

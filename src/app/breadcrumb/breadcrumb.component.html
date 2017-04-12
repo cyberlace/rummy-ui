@@ -6,7 +6,10 @@
         <span class="fs1" aria-hidden="true" data-icon=""></span>
         <a>Home</a>
       </li>
-      <li class="breadcrumb-item active">Tables</li>
+      <li *ngFor="let bc of path" class="breadcrumb-item {{bc.active?'active':''}}">
+        <a routerLink="{{bc.link}}" *ngIf="bc.link">{{bc.title}}</a>
+        <span *ngIf="!bc.link">{{bc.title}}</span>
+      </li>
     </ol>
   </div>
 </section>
