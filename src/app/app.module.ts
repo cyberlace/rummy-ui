@@ -16,6 +16,7 @@ import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {PageCreateTableComponent} from './page-create-table/page-create-table.component';
 import {PageSignupComponent} from './page-signup/page-signup.component';
 import {RummyApiService} from './shared/services/rummy-api.service';
+import {SocketService} from './shared/services/socket.service';
 import {PageValidateEmailComponent} from './page-validate-email/page-validate-email.component';
 import {GameTablesService} from './shared/services/game-tables.service';
 import { PageGameTableComponent } from './page-game-table/page-game-table.component';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     RummyApiService,
+    SocketService,
     AuthenticationService,
     GameTablesService
   ],

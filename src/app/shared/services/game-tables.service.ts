@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
 import {RummyApiService} from './rummy-api.service';
 import {GameTable} from '../models/game-table';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class GameTablesService {
+  private gameTables$ = new BehaviorSubject<GameTable[]>(null);
 
   constructor(private api: RummyApiService) {
   }
 
   getAll(): any {
-    return this.api.get('/game-table')
+    this.api.get('/game-table')
       .map(res => {
         const data = res.json();
         return data.map(table => {
@@ -26,11 +28,14 @@ export class GameTablesService {
 
           return gameTable;
         });
+      })
+      .subscribe(gameTables => {
+        this.gameTables$.next(gameTables);
       });
+    return this.gameTables$.asObservable();
   }
 
   create(gameTable: GameTable): any {
-     return this.api.post('/game-table', gameTable.convertForAPI());
+    return this.api.post('/game-table', gameTable.convertForAPI());
   }
-
 }
