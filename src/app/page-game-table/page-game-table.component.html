@@ -8,9 +8,10 @@
       <div class="content">
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="error">{{errorMsg}}</div>
             <div class="responsive_table_main responsive_sortable">
               <div class="float-right" style="margin-bottom: 10px; ">
-                <a class="btn btn-primary" >Join</a>
+                <a class="btn btn-primary" (click)="joinTable()">Join</a>
               </div>
               <table class="table tablesaw tablesaw-stack tablesaw-sortable"
                      data-tablesaw-sortable
@@ -32,14 +33,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!--
+
                 <tr *ngFor="let tableUser of tableUsers">
                   <td>{{tableUser.id}}</td>
                   <td>{{tableUser.userFirstName}}</td>
-                  <td>{{gameTable.status}}</td>
+                  <td>{{tableUser.status}}</td>
                   <td></td>
                 </tr>
-                -->
+
                 </tbody>
               </table>
             </div>

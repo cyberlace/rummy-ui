@@ -19,7 +19,8 @@ import {RummyApiService} from './shared/services/rummy-api.service';
 import {SocketService} from './shared/services/socket.service';
 import {PageValidateEmailComponent} from './page-validate-email/page-validate-email.component';
 import {GameTablesService} from './shared/services/game-tables.service';
-import { PageGameTableComponent } from './page-game-table/page-game-table.component';
+import {PageGameTableComponent} from './page-game-table/page-game-table.component';
+import {TableUsersService} from './shared/services/table-users.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/game-tables', pathMatch: 'full'},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     RummyApiService,
     SocketService,
     AuthenticationService,
-    GameTablesService
+    GameTablesService,
+    TableUsersService
   ],
   bootstrap: [AppComponent]
 })

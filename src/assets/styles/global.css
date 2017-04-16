@@ -120,3 +120,7 @@ a:not([href]):not([tabindex]).btn {
 .breadcrumb-item.active {
   color: #818a91;
 }
+
+.error {
+  color: #f84343;
+}

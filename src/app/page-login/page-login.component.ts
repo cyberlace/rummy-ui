@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../shared/services/authentication.service';
 import {Router} from '@angular/router';
+import {SocketService} from '../shared/services/socket.service';
 
 @Component({
   selector: 'app-page-login',
@@ -12,7 +13,9 @@ export class PageLoginComponent implements OnInit {
   public passwordError: string;
   public loginError: string;
 
-  constructor(private auth: AuthenticationService, private router: Router) {
+  constructor(private auth: AuthenticationService,
+              private socket: SocketService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class PageLoginComponent implements OnInit {
     }
     if (isValid) {
       this.auth.login(email, password).subscribe(res => {
+        this.socket.initConnection();
         this.router.navigate(['/game-tables']);
       }, err => {
         const data = err.json();

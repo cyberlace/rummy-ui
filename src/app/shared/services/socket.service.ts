@@ -2,25 +2,40 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import * as io from 'socket.io-client';
 import {Observable} from 'rxjs/Observable';
-import {GameTablesService} from './game-tables.service';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class SocketService {
   private socket;
   apiBaseUrl: string = environment.apiBaseUrl;
 
-  constructor(private gameTableService: GameTablesService) {
-    this.socket = io(this.apiBaseUrl);
+  constructor(private auth: AuthenticationService) {
+    if (this.auth.isUserLoggedIn) {
+      this.socket = io(this.apiBaseUrl, {query: 'current_user_id=' + this.auth.userId});
+    }
   }
 
-  getConnection() {
-    return this.socket;
+  initConnection() {
+    if (this.auth.isUserLoggedIn) {
+      this.socket = io(this.apiBaseUrl, {query: 'current_user_id=' + this.auth.userId});
+    }
   }
 
   getGameTableUpdates() {
     const gameTablesObs$ = new Observable(observer => {
       this.socket.on('game-tables-updated', (data) => {
-        this.gameTableService.getAll();
+        console.log('game-table-updated');
+        observer.next(data);
+      });
+    });
+    return gameTablesObs$;
+  }
+
+  getTableUserUpdates() {
+    const gameTablesObs$ = new Observable(observer => {
+      this.socket.on('table-users-updated', (data) => {
+        console.log('table-users-updated');
+        observer.next(data);
       });
     });
     return gameTablesObs$;
