@@ -1,0 +1,52 @@
+<app-header></app-header>
+<section id="main" class="container-fluid">
+  <div class="row">
+
+    <app-breadcrumb title="Game Round" [path]="path"></app-breadcrumb>
+
+    <section class="content-wrapper" id="main-content">
+      <div class="content">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="gameInfo">
+            <div class="game-table">
+              <div class="other-players clearfix">
+                <div class="player" *ngFor="let player of otherPlayers">
+                  <p class="{{ gameInfo.card_position === player.user_id ? 'card-position' : ''}}">
+                    {{player.first_name}}</p>
+                </div>
+              </div>
+              <div class="deck">
+                <div class="game-deck clearfix">
+                  <div class="open-card card" (click)="pickOpenCard()"><img src="../../assets/images/cards/{{openCard}}.png"></div>
+                  <div class="game-actions">
+                    <div class="message">{{message}}</div>
+                  </div>
+                  <div class="closed-deck">
+                    <div class="closed-card card" (click)="pickClosedCard()"><img src="../../assets/images/cards/closed-card.png"></div>
+                    <div class="joker card"><img src="../../assets/images/cards/{{gameInfo.joker}}.png"></div>
+                  </div>
+                </div>
+                <div class="player-deck clearfix" dnd-sortable-container [sortableData]="gameInfo.player_deck">
+                  <div *ngFor="let card of gameInfo.player_deck; let i = index"
+                       dnd-sortable
+                       [sortableIndex]="i"
+                       class="card type-{{card | slice:0:1}} value-{{card | slice:1}}"
+                       (click)="selectCard(card, $event)">
+                    <img src="../../assets/images/cards/{{card}}.png">
+                  </div>
+                </div>
+              </div>
+              <div class="current-player clearfix">
+                <div class="player">
+                  <p class="{{ gameInfo.card_position === currentUser.id ? 'card-position' : ''}}">
+                    {{currentUser.firstName}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<app-footer></app-footer>

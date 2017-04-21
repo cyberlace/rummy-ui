@@ -1,0 +1,67 @@
+.card {
+  float: left;
+  display: inline;
+  width: 100px;
+}
+
+.deck {
+  width: 625px;
+  margin: 10px auto;
+}
+
+.open-card {
+  float: left;
+}
+
+.game-deck {
+  margin: 10px 0;
+  align-content: center;
+}
+.game-actions{
+  display: inline-block;
+}
+.closed-deck {
+  float: right;
+  width: 140px;
+  margin-right: 5px;
+}
+
+.closed-card {
+  z-index: 100;
+}
+
+.joker {
+  margin-left: -80px;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+.player-deck .card:first-child {
+  margin-left: 0px;
+}
+
+.player-deck .card {
+  margin-left: -60px;
+}
+
+.other-players {
+  text-align: center;
+}
+
+.current-player {
+  text-align: center;
+}
+
+.player {
+  display: inline-block;
+  margin: 5px;
+}
+
+.card-position {
+  color: #b30644;
+}
+
+.selected-card {
+  margin-top:-15px;
+}

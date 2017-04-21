@@ -21,15 +21,19 @@ import {PageValidateEmailComponent} from './page-validate-email/page-validate-em
 import {GameTablesService} from './shared/services/game-tables.service';
 import {PageGameTableComponent} from './page-game-table/page-game-table.component';
 import {TableUsersService} from './shared/services/table-users.service';
+import {PageGameRoundComponent} from './page-game-round/page-game-round.component';
+import {GameRoundsService} from './shared/services/game-rounds.service';
+import {DndModule} from 'ng2-dnd';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/game-tables', pathMatch: 'full'},
   {path: 'login', component: PageLoginComponent},
   {path: 'signup', component: PageSignupComponent},
   {path: 'validate-email', component: PageValidateEmailComponent},
+  {path: 'create-table', component: PageCreateTableComponent},
   {path: 'game-tables', component: PageTablesComponent},
   {path: 'game-table/:gameTableId', component: PageGameTableComponent},
-  {path: 'create-table', component: PageCreateTableComponent},
+  {path: 'game-round/:gameTableId', component: PageGameRoundComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -46,7 +50,8 @@ const appRoutes: Routes = [
     PageCreateTableComponent,
     PageSignupComponent,
     PageValidateEmailComponent,
-    PageGameTableComponent
+    PageGameTableComponent,
+    PageGameRoundComponent
   ],
   imports: [
     BrowserModule,
@@ -54,13 +59,15 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes, {useHash: true}),
+    DndModule.forRoot(),
   ],
   providers: [
     RummyApiService,
     SocketService,
     AuthenticationService,
     GameTablesService,
-    TableUsersService
+    TableUsersService,
+    GameRoundsService
   ],
   bootstrap: [AppComponent]
 })
