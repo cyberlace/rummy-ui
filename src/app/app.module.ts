@@ -23,7 +23,7 @@ import {PageGameTableComponent} from './page-game-table/page-game-table.componen
 import {TableUsersService} from './shared/services/table-users.service';
 import {PageGameRoundComponent} from './page-game-round/page-game-round.component';
 import {GameRoundsService} from './shared/services/game-rounds.service';
-import {DndModule} from 'ng2-dnd';
+import {SortablejsModule} from 'angular-sortablejs';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/game-tables', pathMatch: 'full'},
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes, {useHash: true}),
-    DndModule.forRoot(),
+    SortablejsModule,
   ],
   providers: [
     RummyApiService,

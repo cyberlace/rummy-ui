@@ -2,10 +2,51 @@
   float: left;
   display: inline;
   width: 100px;
+  height: 130px;
+  border: 1px solid #CCCCCC;
+}
+
+.open-card, .closed-card {
+  float: left;
+  display: inline;
+  width: 100px;
+  height: 130px;
+}
+
+.closed-card {
+  position: relative;
+  z-index: 100;
+}
+
+.card-value {
+  float: left;
+  width: 30px;
+  height: 100%;
+}
+
+.card-count, .card-type {
+  width: 25px;
+  height: 25px;
+  margin: 2px auto 3px auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-bg {
+  float: left;
+  width: 68px;
+  height: 100%;
+  font-size: 65px;
+  line-height: 65px;
+  padding-top: 35px;
+}
+
+.card-type, .card-bg {
+  font-family: "Digits";
 }
 
 .deck {
-  width: 625px;
+  width: 500px;
   margin: 10px auto;
 }
 
@@ -14,35 +55,43 @@
 }
 
 .game-deck {
-  margin: 10px 0;
+  margin: 5px 0 20px;
   align-content: center;
 }
-.game-actions{
+
+.game-actions {
+  float: left;
   display: inline-block;
+  width: 240px;
+  margin: 0 10px;
 }
+
+.message {
+  text-align: center;
+}
+
+.drop-show-buttons {
+  margin-top: 75px;
+}
+
 .closed-deck {
-  float: right;
-  width: 140px;
-  margin-right: 5px;
+  float: left;
+  width: 130px;
 }
 
-.closed-card {
-  z-index: 100;
-}
-
-.joker {
-  margin-left: -80px;
+.joker .card {
+  margin-left: -85px;
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
 }
 
-.player-deck .card:first-child {
-  margin-left: 0px;
+.player-deck {
+  margin-left: 70px;
 }
 
 .player-deck .card {
-  margin-left: -60px;
+  margin-left: -70px;
 }
 
 .other-players {
@@ -63,5 +112,41 @@
 }
 
 .selected-card {
-  margin-top:-15px;
+  margin-top: -15px;
+}
+
+.type-C .card-type:before, .type-C .card-bg:before {
+  content: "K";
+}
+
+.type-D .card-type:before, .type-D .card-bg:before {
+  content: "L";
+}
+
+.type-H .card-type:before, .type-H .card-bg:before {
+  content: "M";
+}
+
+.type-S .card-type:before, .type-S .card-bg:before {
+  content: "N";
+}
+
+.type-B .card-type:before, .type-B .card-bg:before {
+  content: "§";
+}
+
+.type-R .card-type:before, .type-R .card-bg:before {
+  content: "§";
+}
+
+.card-joker:before {
+  content: "§";
+}
+
+.type-R, .type-D, .type-H {
+  color: #d40000;
+}
+
+.type-B, .type-S, .type-C {
+  color: Black;
 }

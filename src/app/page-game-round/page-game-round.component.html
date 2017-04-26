@@ -17,22 +17,51 @@
               </div>
               <div class="deck">
                 <div class="game-deck clearfix">
-                  <div class="open-card card" (click)="pickOpenCard()"><img src="../../assets/images/cards/{{openCard}}.png"></div>
+                  <div class="open-card" (click)="pickOpenCard()">
+                    <img src="../../assets/images/cards/{{openCard}}.png" *ngIf="gameInfo.card_picked_from === 'Open'">
+                    <div class="card type-{{openCard | slice:0:1}} value-{{openCard | slice:1}} clearfix"
+                         *ngIf="gameInfo.card_picked_from !== 'Open'">
+                      <div class="card-value">
+                        <div class="card-count" align="center">{{openCard | slice:1}}</div>
+                        <div class="card-type" align="center"></div>
+                        <div class="card-joker" align="center" *ngIf="openCard === gameInfo.joker"></div>
+                      </div>
+                      <div class="card-bg" align="center"></div>
+                    </div>
+                  </div>
                   <div class="game-actions">
                     <div class="message">{{message}}</div>
+                    <div class="drop-show-buttons clearfix" *ngIf="gameInfo.card_position === currentUser.id">
+                      <button type="button" class="btn btn-primary float-left" (click)="dropCard()">Drop</button>
+                      <button type="button" class="btn btn-success float-right" (click)="rummy()">Rummy</button>
+                    </div>
                   </div>
                   <div class="closed-deck">
-                    <div class="closed-card card" (click)="pickClosedCard()"><img src="../../assets/images/cards/closed-card.png"></div>
-                    <div class="joker card"><img src="../../assets/images/cards/{{gameInfo.joker}}.png"></div>
+                    <div class="closed-card" (click)="pickClosedCard()"><img
+                      src="../../assets/images/cards/{{closedCard}}.png"></div>
+                    <div class="joker">
+                      <div class="card type-{{gameInfo.joker | slice:0:1}} value-{{gameInfo.joker | slice:1}} clearfix">
+                        <div class="card-value">
+                          <div class="card-count" align="center">{{gameInfo.joker | slice:1}}</div>
+                          <div class="card-type" align="center"></div>
+                          <div class="card-joker" align="center"></div>
+                        </div>
+                        <div class="card-bg" align="center"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="player-deck clearfix" dnd-sortable-container [sortableData]="gameInfo.player_deck">
-                  <div *ngFor="let card of gameInfo.player_deck; let i = index"
-                       dnd-sortable
-                       [sortableIndex]="i"
-                       class="card type-{{card | slice:0:1}} value-{{card | slice:1}}"
-                       (click)="selectCard(card, $event)">
-                    <img src="../../assets/images/cards/{{card}}.png">
+                <div class="player-deck clearfix" [sortablejs]="playerDeck">
+                  <div *ngFor="let card of playerDeck; let i = index"
+                       class="card type-{{card | slice:0:1}} value-{{card | slice:1}} clearfix"
+                       id="card-{{i}}"
+                       (click)="selectCard(card, i)">
+                    <div class="card-value">
+                      <div class="card-count" align="center">{{card | slice:1}}</div>
+                      <div class="card-type" align="center"></div>
+                      <div class="card-joker" align="center" *ngIf="(card | slice:1) === (gameInfo.joker | slice:1)"></div>
+                    </div>
+                    <div class="card-bg" align="center"></div>
                   </div>
                 </div>
               </div>
