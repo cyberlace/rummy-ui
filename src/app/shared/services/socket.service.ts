@@ -22,22 +22,32 @@ export class SocketService {
   }
 
   getGameTableUpdates() {
-    const gameTablesObs$ = new Observable(observer => {
+    const observable$ = new Observable(observer => {
       this.socket.on('game-tables-updated', (data) => {
         console.log('game-table-updated');
         observer.next(data);
       });
     });
-    return gameTablesObs$;
+    return observable$;
   }
 
   getTableUserUpdates() {
-    const gameTablesObs$ = new Observable(observer => {
+    const observable$ = new Observable(observer => {
       this.socket.on('table-users-updated', (data) => {
         console.log('table-users-updated');
         observer.next(data);
       });
     });
-    return gameTablesObs$;
+    return observable$;
+  }
+
+  getCreateRoundUpdates() {
+    const observable$ = new Observable(observer => {
+      this.socket.on('table-round-created', (data) => {
+        console.log('table-round-created');
+        observer.next(data);
+      });
+    });
+    return observable$;
   }
 }

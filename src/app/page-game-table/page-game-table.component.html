@@ -11,7 +11,8 @@
             <div class="error">{{errorMsg}}</div>
             <div class="responsive_table_main responsive_sortable">
               <div class="float-right" style="margin-bottom: 10px; ">
-                <a class="btn btn-primary" (click)="joinTable()">Join</a>
+                <a class="btn btn-success" (click)="startGame()" *ngIf="(usersCount >= 2 && isTableOwner) || (gameTable && (usersCount == gameTable.maxPlayers || gameTable.status ==='Started'))">Start Game</a>
+                <a class="btn btn-primary" (click)="joinTable()" *ngIf="!isJoined && gameTable && (usersCount < gameTable.maxPlayers)">Join</a>
               </div>
               <table class="table tablesaw tablesaw-stack tablesaw-sortable"
                      data-tablesaw-sortable
