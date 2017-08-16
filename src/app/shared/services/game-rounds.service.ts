@@ -9,25 +9,56 @@ export class GameRoundsService {
   constructor(private api: RummyApiService, private auth: AuthenticationService) {
   }
 
-  startGame(gametableId): any {
+  startGame(gameTableId): any {
     const headers = new Headers({'Authorization': 'Bearer ' + this.auth.token});
     const options = new RequestOptions({headers: headers});
 
-    return this.api.get('/table-rounds/start/' + gametableId, options).map(data => {
+    return this.api.get('/table-rounds/start/' + gameTableId, options).map(data => {
       return data.json();
     });
   }
 
-  getRoundInfo(gametableId): any {
+  getRoundInfo(gameTableId): any {
     const headers = new Headers({'Authorization': 'Bearer ' + this.auth.token});
     const options = new RequestOptions({headers: headers});
 
-    return this.api.get('/table-rounds/get-info/' + gametableId, options).map(data => {
+    return this.api.get('/table-rounds/get-info/' + gameTableId, options).map(data => {
       const roundInfo = data.json();
       roundInfo.player_deck = JSON.parse(roundInfo.player_deck);
-      roundInfo.open_deck = JSON.parse(roundInfo.open_deck);
       return roundInfo;
     });
   }
 
+  pickOpenCard(gameTableId: number) {
+    const headers = new Headers({'Authorization': 'Bearer ' + this.auth.token});
+    const options = new RequestOptions({headers: headers});
+
+    return this.api.get('/table-rounds/pick-open-card/' + gameTableId, options).map(data => {
+      const roundInfo = data.json();
+      roundInfo.player_deck = JSON.parse(roundInfo.player_deck);
+      return roundInfo;
+    });
+  }
+
+  pickClosedCard(gameTableId: number) {
+    const headers = new Headers({'Authorization': 'Bearer ' + this.auth.token});
+    const options = new RequestOptions({headers: headers});
+
+    return this.api.get('/table-rounds/pick-closed-card/' + gameTableId, options).map(data => {
+      const roundInfo = data.json();
+      roundInfo.player_deck = JSON.parse(roundInfo.player_deck);
+      return roundInfo;
+    });
+  }
+
+  dropCard(gameTableId: number, card: string) {
+    const headers = new Headers({'Authorization': 'Bearer ' + this.auth.token});
+    const options = new RequestOptions({headers: headers});
+
+    return this.api.get('/table-rounds/drop-card/' + gameTableId + '/' + card, options).map(data => {
+      const roundInfo = data.json();
+      roundInfo.player_deck = JSON.parse(roundInfo.player_deck);
+      return roundInfo;
+    });
+  }
 }

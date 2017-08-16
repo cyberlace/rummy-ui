@@ -1,4 +1,14 @@
 /*-- Global.css */
+@font-face {
+  font-family: 'Digits';
+  src:url('../fonts/digits/Digits.ttf.woff') format('woff'),
+  url('../fonts/digits/Digits.ttf.svg#Digits') format('svg'),
+  url('../fonts/digits/Digits.ttf.eot'),
+  url('../fonts/digits/Digits.ttf.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .checkbox-squared {
   position: relative;
 }

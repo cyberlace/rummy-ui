@@ -43,8 +43,8 @@ export class SocketService {
 
   getCreateRoundUpdates() {
     const observable$ = new Observable(observer => {
-      this.socket.on('table-round-created', (data) => {
-        console.log('table-round-created');
+      this.socket.on('table-round-updated', (data) => {
+        console.log('table-round-updated');
         observer.next(data);
       });
     });
